@@ -11,14 +11,14 @@ const bot = new TelegramBot(TOKEN, {polling: true})
 // 		port: config.get('port'),
 // 		autoOpen: false
 // 	}
-// }) 
+// })
 
 // bot.openWebHook()
 // bot.setWebHook(`${config.get('url')}/bot${TOKEN}`)
 
 
 function randomDice(count) {
-	let result = ''
+	let result = '';
 
 	function getRandomInt(min, max) {
 		return Math.floor(Math.random() * (max - min)) + min;
