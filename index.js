@@ -3,15 +3,18 @@ import config from 'config'
 import bodyParser from 'body-parser'
 
 const TOKEN = config.get('token')
-const bot = new TelegramBot(TOKEN, {
-	webHook: {
-		port: config.get('port'),
-		autoOpen: false
-	}
-})
 
-bot.openWebHook()
-bot.setWebHook(`${config.get('url')}/bot${TOKEN}`)
+const bot = new TelegramBot(TOKEN, {polling: true})
+
+// const bot = new TelegramBot(TOKEN, {
+// 	webHook: {
+// 		port: config.get('port'),
+// 		autoOpen: false
+// 	}
+// })
+
+// bot.openWebHook()
+// bot.setWebHook(`${config.get('url')}/bot${TOKEN}`)
 
 
 function randomDice(count) {
@@ -67,7 +70,6 @@ bot.onText(/\/random/, (msg, [source, match]) => {
 
 // Команда help
 bot.onText(/\/help/, (msg, [source, match]) => {
-	console.log('11111111')
 	const { chat: { id }} = msg,
 	helpText = 'Как пользоваться ботом?\n\nСписок доступных команд\n/start - Запуск бота\n/random - Случайный бросок двух костей\n/help - краткая справка\nПо всем вопросам пишите @krivenko'
 

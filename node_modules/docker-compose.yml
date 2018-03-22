@@ -1,0 +1,5 @@
+version: '2'
+services:
+  random_dice_bot:
+    build: .
+    image: krivenko/random_dice_bot:latest
