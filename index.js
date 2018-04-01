@@ -1,10 +1,13 @@
 import TelegramBot from 'node-telegram-bot-api'
 import config from 'config'
-import bodyParser from 'body-parser'
+import bodyParser from 'koa-bodyparser'
+import Koa from 'koa'
+import Router from 'koa-router'
 
 const TOKEN = config.get('token')
 
-const bot = new TelegramBot(TOKEN, {polling: true})
+const bot = new TelegramBot(TOKEN)
+// const bot = new TelegramBot(TOKEN, {polling: true})
 
 // const bot = new TelegramBot(TOKEN, {
 // 	webHook: {
@@ -15,6 +18,38 @@ const bot = new TelegramBot(TOKEN, {polling: true})
 
 // bot.openWebHook()
 // bot.setWebHook(`${config.get('url')}/bot${TOKEN}`)
+// bot.setWebHook(`${config.get('url')}/bot`)
+
+
+const app = new Koa();
+const router = Router();
+
+
+router.get('/', ctx => {
+	ctx.body = 'Random Dice Bot'
+});
+
+router.post('/bot', ctx => {
+	const { body } = ctx.request
+
+	console.log(body)
+
+	bot.processUpdate(body)
+	ctx.status = 200
+});
+
+app.use(bodyParser())
+app.use(router.routes())
+
+app.listen(config.get('port'), () => {
+	console.log('Listening on port ' + config.get('port'));
+});
+
+
+
+
+
+
 
 
 function randomDice(count) {
@@ -45,13 +80,14 @@ const buttons = {
 			[{
 				text: 'Бросить две кости',
 				callback_data: '2'
-		}]
+			}]
 		]
 	}
 }
 
 bot.on('callback_query', query => {
 	bot.sendPhoto(query.from.id, randomDice(query.data), buttons);
+	bot.answerCallbackQuery(query.id)
 })
 
 // Команда start

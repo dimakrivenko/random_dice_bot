@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . /home/ec2-user/random_dice_bot
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]
