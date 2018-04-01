@@ -18,7 +18,7 @@ const bot = new TelegramBot(TOKEN)
 
 // bot.openWebHook()
 // bot.setWebHook(`${config.get('url')}/bot${TOKEN}`)
-bot.setWebHook(`${config.get('url')}/bot`)
+// bot.setWebHook(`${config.get('url')}/bot`)
 
 
 const app = new Koa();
