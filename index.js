@@ -6,18 +6,10 @@ import Router from 'koa-router'
 
 const TOKEN = config.get('token')
 
-const bot = new TelegramBot(TOKEN)
-// const bot = new TelegramBot(TOKEN, {polling: true})
 
-// const bot = new TelegramBot(TOKEN, {
-// 	webHook: {
-// 		port: config.get('port'),
-// 		autoOpen: false
-// 	}
-// })
+const bot = new TelegramBot(TOKEN, {polling: true})
 
-// bot.openWebHook()
-// bot.setWebHook(`${config.get('url')}/bot${TOKEN}`)
+// const bot = new TelegramBot(TOKEN)
 // bot.setWebHook(`${config.get('url')}/bot`)
 
 
