@@ -33,8 +33,8 @@ router.post('/bot', ctx => {
 app.use(bodyParser())
 app.use(router.routes())
 
-const serverPort = process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || process.env.PORT || config.get('port');
-const serverIp = process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || 'localhost';
+const serverPort = process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || process.env.PORT || process.env.WEB_PORT || config.get('port');
+const serverIp = process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || process.env.IP || 'localhost';
 
 app.listen(serverPort, serverIp, () => {
 	console.log('Server listening on ' + serverIp + ':' + serverPort);
