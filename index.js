@@ -21,19 +21,19 @@ router.get('/', ctx => {
 	ctx.body = 'Random Dice Bot'
 });
 
-router.post('/bot', ctx => {
-	const { body } = ctx.request
+// router.post('/bot', ctx => {
+// 	const { body } = ctx.request
 
-	// console.log(body)
+// 	// console.log(body)
 
-	bot.processUpdate(body)
-	ctx.status = 200
-});
+// 	bot.processUpdate(body)
+// 	ctx.status = 200
+// });
 
 app.use(bodyParser())
 app.use(router.routes())
 
-const serverPort = process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || process.env.PORT || process.env.WEB_PORT || config.get('port');
+const serverPort = process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || process.env.PORT || process.env.WEB_PORT || 8080;
 const serverIp = process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || process.env.IP || '127.0.0.1';
 
 app.listen(serverPort, serverIp, () => {
