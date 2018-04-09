@@ -2,6 +2,7 @@
   "name": "RandomDiceBot",
   "version": "1.0.0",
   "description": "",
+  "scripts": "index.js",
   "scripts": {
     "start": "node index"
   },
