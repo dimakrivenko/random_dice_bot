@@ -1,5 +1,5 @@
 {
-	"url": "https://random-dice-bot.herokuapp.com",
-	"port": "3001",
+	"url": "https://random-dice-bot-random-dice-bot.7e14.starter-us-west-2.openshiftapps.com",
+	"port": "80",
 	"token": "396636840:AAHy4prMawQisJnE8Gn0PVe0pFIU2YHqeUQ"
 }
