@@ -6,13 +6,11 @@ import Router from 'koa-router'
 
 const TOKEN = config.get('token')
 
-
-const bot = new TelegramBot(TOKEN, {polling: true})
+// const bot = new TelegramBot(TOKEN, {polling: true})
 const analytic = require('botanio')('30a29849-c4f0-4661-afed-6e3e1e31dc5e');
 
-// const bot = new TelegramBot(TOKEN)
-// bot.setWebHook(`${config.get('url')}/bot`)
-
+const bot = new TelegramBot(TOKEN)
+bot.setWebHook(`${config.get('url')}/bot`)
 
 
 const app = new Koa();
