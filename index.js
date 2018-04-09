@@ -8,9 +8,11 @@ const TOKEN = config.get('token')
 
 
 const bot = new TelegramBot(TOKEN, {polling: true})
+const analytic = require('botanio')('30a29849-c4f0-4661-afed-6e3e1e31dc5e');
 
 // const bot = new TelegramBot(TOKEN)
 // bot.setWebHook(`${config.get('url')}/bot`)
+
 
 
 const app = new Koa();
@@ -24,7 +26,7 @@ router.get('/', ctx => {
 router.post('/bot', ctx => {
 	const { body } = ctx.request
 
-	console.log(body)
+	// console.log(body)
 
 	bot.processUpdate(body)
 	ctx.status = 200
@@ -80,6 +82,8 @@ const buttons = {
 bot.on('callback_query', query => {
 	bot.sendPhoto(query.from.id, randomDice(query.data), buttons);
 	bot.answerCallbackQuery(query.id)
+
+	analytic.track(query, '/random_button_' + query.data)
 })
 
 // Команда start
@@ -87,6 +91,8 @@ bot.onText(/\/start/, (msg, [source, match]) => {
 	const { chat: { id }} = msg
 
 	bot.sendMessage(id, 'Бот случайным образом кидает игральные кости, выберите сколько костей необходимо кинуть.', buttons)
+
+	analytic.track(msg, '/start')
 })
 
 // Команда random
@@ -94,12 +100,16 @@ bot.onText(/\/random/, (msg, [source, match]) => {
 	const { chat: { id }} = msg
 
 	bot.sendPhoto(id, randomDice(2), buttons);
+
+	analytic.track(msg, '/random')
 })
 
 // Команда help
 bot.onText(/\/help/, (msg, [source, match]) => {
 	const { chat: { id }} = msg,
-	helpText = 'Как пользоваться ботом?\n\nСписок доступных команд\n/start - Запуск бота\n/random - Случайный бросок двух костей\n/help - краткая справка\nПо всем вопросам пишите @krivenko'
+		helpText = 'Как пользоваться ботом?\n\nСписок доступных команд\n/start - Запуск бота\n/random - Случайный бросок двух костей\n/help - краткая справка\nПо всем вопросам пишите @krivenko'
 
 	bot.sendMessage(id, helpText)
+
+	analytic.track(msg, '/help')
 })

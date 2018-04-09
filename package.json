@@ -8,6 +8,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "body-parser": "^1.18.2",
+    "botanio": "0.0.6",
     "config": "^1.30.0",
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
