@@ -20,7 +20,7 @@ const router = Router();
 
 
 router.get('/', ctx => {
-	ctx.body = 'Random Dice Bot'
+	ctx.body = 'Random Dice Bot '
 });
 
 router.post('/bot', ctx => {
