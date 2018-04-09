@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/', function(req, res) {
 	console.log('route /')
-	res.send('Random Dice Bot')
+	res.send('Random Dice Bot1')
 });
 
 
