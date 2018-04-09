@@ -113,3 +113,6 @@ bot.onText(/\/help/, (msg, [source, match]) => {
 
 	analytic.track(msg, '/help')
 })
+
+
+// pm2 startOrRestart ecosystem.json --env production

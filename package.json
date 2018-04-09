@@ -19,7 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "dev": "babel-node index --presets=env",
-    "start": "pm2 startOrRestart ecosystem.json --env production",
+    "start": "babel-node index --presets=env",
     "stop": "NODE_ENV='production' pm2 delete random_dice_bot -s &> /dev/null"
   },
   "author": "",
