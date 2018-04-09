@@ -1,27 +1,21 @@
 {
-  "name": "bot",
+  "name": "Random Dice Bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "body-parser": "^1.18.2",
-    "botanio": "0.0.6",
-    "config": "^1.30.0",
-    "koa": "^2.5.0",
-    "koa-bodyparser": "^4.2.0",
-    "koa-router": "^7.4.0",
-    "node-telegram-bot-api": "^0.30.0",
-    "pm2": "^2.10.1"
-  },
-  "devDependencies": {},
   "scripts": {
-    "dev": "babel-node index --presets=env",
-    "start": "babel-node index --presets=env",
-    "stop": "NODE_ENV='production' pm2 delete random_dice_bot -s &> /dev/null"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimakrivenko/random_dice_bot.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/dimakrivenko/random_dice_bot",
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0"
+  }
 }
